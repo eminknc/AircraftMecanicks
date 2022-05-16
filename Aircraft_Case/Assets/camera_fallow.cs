@@ -13,7 +13,7 @@ public class camera_fallow : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -21,22 +21,20 @@ public class camera_fallow : MonoBehaviour
     {
         if (is_landing == false)
         {
-            Vector3 pos = target.position - target.forward * 10.0f + Vector3.up * 5.0f;
+            Vector3 pos = target.position - target.forward * 1.0f + Vector3.up * 5.0f;
             float declination = 0.96f;
             transform.position = transform.position * declination + pos * (1.0f - declination);
             transform.LookAt(target.position + target.forward * 30.0f);
         }
-        else {
+        else
+        {
             transform.localPosition = landing_camera_referans_pos.position;
-           // transform.LookAt(target);
-
             Vector3 lookDirection = target.position - transform.position;
             lookDirection.Normalize();
-
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDirection), 10 * Time.deltaTime);
 
 
-            
+
 
 
         }
